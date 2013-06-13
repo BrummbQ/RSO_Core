@@ -1,0 +1,23 @@
+{
+    "articles": {
+        "a": {
+            "Article": {
+                "name": "Kaffee",
+                "tags": ["all","beverage"],
+                "regular_price": 3,
+                "action_price": 2,
+                "limit_time": 1400,
+                "limit_number": 100
+            }
+        },
+        "b": {
+            "Article": {
+                "name": "Sonnencreme",
+                "tags": ["all","hot"],
+                "regular_price": 4,
+                "action_price": 4,
+                "limit_number": 100
+            }
+        }
+    }
+}

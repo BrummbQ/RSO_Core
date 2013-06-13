@@ -1,0 +1,24 @@
+{
+    "customers": {
+        "a": {
+            "Customer": {
+                "name": "Lisa",
+                "age": 23,
+                "gender": "female",
+                "address": "Leipzig",
+                "flight": "f-123",
+                "return_flight": "rf-223"
+            }
+        },
+        "b": {
+            "Customer": {
+                "name": "Tina",
+                "age": 23,
+                "gender": "female",
+                "address": "Leipzig",
+                "flight": "f-2",
+                "return_flight": "rf-2"
+            }
+        }
+    }
+}

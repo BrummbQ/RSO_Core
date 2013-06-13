@@ -17,12 +17,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 
-class Customer:
+class Factory:
 
-    def __init__(self, name, age, gender, address, flight, return_flight):
-        self.name = name
-        self.age = age
-        self.gender = gender
-        self.address = address
-        self.flight = flight
-        self.return_flight = return_flight
+    def __init__(self):
+        pass
+
+    def create_object(self, data, object_type, schema):
+        attributes = dict()
+        for tag in schema:
+            if tag in data:
+                attributes[tag] = data[tag]
+
+        new_object = type(object_type, (object,), attributes)
+        return new_object
