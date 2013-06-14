@@ -25,41 +25,44 @@ class Parser:
 
     def __init__(self):
         self.factory = Factory()
-        self.customers = dict()
         self.customer_schema = ["name", "gender", "age", "address", "flight",
             "return_flight"]
-        self.articles = dict()
         self.article_schema = ["name", "tags", "regular_price", "action_price",
             "limit_time", "limit_number"]
-        self.tags = dict()
         self.tags_schema = ["target_property", "positive", "negative"]
 
     def parse_customers(self, customer_file):
         with open(customer_file, 'r') as f:
+            customers = dict()
             json_data = f.read()
             json_decoded = json.loads(json_data)
             for customer in json_decoded["customers"]:
                 new_customer = self.factory.create_object(
                     json_decoded["customers"][customer]["Customer"],
                     "Customer", self.customer_schema)
-                self.customers[customer] = new_customer
+                customers[customer] = new_customer
+            return customers
 
     def parse_articles(self, articles_file):
         with open(articles_file, 'r') as f:
+            articles = dict()
             json_data = f.read()
             json_decoded = json.loads(json_data)
             for article in json_decoded["articles"]:
                 new_article = self.factory.create_object(
                     json_decoded["articles"][article]["Article"],
                     "Article", self.article_schema)
-                self.articles[article] = new_article
+                articles[article] = new_article
+            return articles
 
     def parse_tags(self, tag_file):
         with open(tag_file, 'r') as f:
+            tags = dict()
             json_data = f.read()
             json_decoded = json.loads(json_data)
             for tag in json_decoded["tags"]:
                 new_tag = self.factory.create_object(
                     json_decoded["tags"][tag],
                     "Tag", self.tags_schema)
-                self.tags[tag] = new_tag
+                tags[tag] = new_tag
+            return tags

@@ -1,7 +1,7 @@
 {
     "tags": {
         "hot": {
-            "target_property": "customer/flight/arrival/city/temperature",
+            "target_property": "flight/arrival/city/temperature",
             "positive": "high",
             "negative": "low"
         },
@@ -10,7 +10,7 @@
             "positive": "*"
         },
         "beverage": {
-            "target_property": "customer/flight/remaining_time",
+            "target_property": "flight/remaining_time",
             "positive": "15"
         }
     }

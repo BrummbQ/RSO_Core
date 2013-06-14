@@ -24,5 +24,16 @@ class Engine:
         self.article_catalog = article_catalog
         self.tag_catalog = tag_catalog
 
-    def articlelist_customer(customer):
+    def articlelist_customer(self, customer):
         pass
+
+    def get_property(self, target, property_string):
+        property_list = property_string.split('/')
+        self.resolve_property(target, 0, property_list)
+
+    def resolve_property(self, target, index, property_list):
+        attr = getattr(target, property_list[index])
+        if len(property_list) > index:
+            self.resolve_property(attr, index + 1, property_list)
+        else:
+            print("found property " + attr)

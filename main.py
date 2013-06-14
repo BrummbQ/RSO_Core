@@ -20,13 +20,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 
 from parser.parser import Parser
+from engine.engine import Engine
+
+
+format_width = 15
+
+
+def print_customers(customers, schema):
+    print("Available Customers: \n=========")
+    for customer in customers:
+        print('{:<{format_width}}{} {}'.format('id', ':', customer,
+            format_width=format_width))
+        print_customer(customers[customer], schema)
+
+
+def print_customer(customer, schema):
+    for tag in schema:
+        print('{:<{format_width}}{} {}'.format(tag, ':',
+            str(getattr(customer, tag, "None")), format_width=format_width))
+    print("=========")
 
 
 def main():
     parser = Parser()
-    parser.parse_customers('data/customer.json')
-    parser.parse_articles('data/article.json')
-    parser.parse_tags('data/tags.json')
+    customers = parser.parse_customers('data/customer.json')
+    articles = parser.parse_articles('data/article.json')
+    tags = parser.parse_tags('data/tags.json')
+    engine = Engine(customers, articles, tags)
+
+    print_customers(customers, parser.customer_schema)
+    custid = input('\nSelect customer [id]: ')
+    print("\nSelected customer: ")
+    print_customer(customers[custid], parser.customer_schema)
+
     return True
 
 if __name__ == '__main__':
