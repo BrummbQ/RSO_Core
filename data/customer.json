@@ -1,26 +1,22 @@
 {
     "customers": {
         "a": {
-            "Customer": {
-                "name": "Lisa",
-                "age": 23,
-                "gender": "female",
-                "address": "Leipzig",
-                "flight": "f-123",
-                "return_flight": "f-1",
-                "flight_class": "economy"
-            }
+            "name": "Lisa",
+            "age": 23,
+            "gender": "female",
+            "address": "Leipzig",
+            "flight": "f-123",
+            "return_flight": "f-1",
+            "flight_class": "economy"
         },
         "b": {
-            "Customer": {
-                "name": "Tina",
-                "age": 23,
-                "gender": "female",
-                "address": "Leipzig",
-                "flight": "f-123",
-                "return_flight": "f-1",
-                "flight_class": "business"
-            }
+            "name": "Tina",
+            "age": 23,
+            "gender": "female",
+            "address": "Leipzig",
+            "flight": "f-123",
+            "return_flight": "f-1",
+            "flight_class": "business"
         }
     }
 }

@@ -49,6 +49,8 @@ def dialog_customer(customers, customer_schema):
     else:
         print("\nSelected customer: ")
         print_customer(customers[custid], customer_schema)
+        return custid
+
 
 def main():
     parser = Parser()
@@ -58,10 +60,13 @@ def main():
     articles = parser.parse_articles('data/article.json')
     tags = parser.parse_tags('data/tags.json')
 
-    engine = Engine(customers, articles, tags)
+    engine = Engine(customers, articles, tags, flights, cities)
 
     print_customers(customers, parser.customer_schema)
-    dialog_customer(customers, parser.customer_schema)
+    cid = dialog_customer(customers, parser.customer_schema)
+
+    ar = engine.articlerating_customer(cid)
+    print(ar)
 
     return True
 

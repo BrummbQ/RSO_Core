@@ -35,61 +35,32 @@ class Parser:
         self.city_schema = ["temperature", "type"]
 
     def parse_customers(self, customer_file):
-        with open(customer_file, 'r') as f:
-            customers = dict()
-            json_data = f.read()
-            json_decoded = json.loads(json_data)
-            for customer in json_decoded["customers"]:
-                new_customer = self.factory.create_object(
-                    json_decoded["customers"][customer]["Customer"],
-                    "Customer", self.customer_schema)
-                customers[customer] = new_customer
-            return customers
+        return self.parse_json_file(customer_file, "Customer", "customers",
+            self.customer_schema)
 
-    def parse_articles(self, articles_file):
-        with open(articles_file, 'r') as f:
-            articles = dict()
-            json_data = f.read()
-            json_decoded = json.loads(json_data)
-            for article in json_decoded["articles"]:
-                new_article = self.factory.create_object(
-                    json_decoded["articles"][article]["Article"],
-                    "Article", self.article_schema)
-                articles[article] = new_article
-            return articles
+    def parse_articles(self, article_file):
+        return self.parse_json_file(article_file, "Article", "articles",
+            self.article_schema)
 
     def parse_tags(self, tag_file):
-        with open(tag_file, 'r') as f:
-            tags = dict()
-            json_data = f.read()
-            json_decoded = json.loads(json_data)
-            for tag in json_decoded["tags"]:
-                new_tag = self.factory.create_object(
-                    json_decoded["tags"][tag],
-                    "Tag", self.tags_schema)
-                tags[tag] = new_tag
-            return tags
+        return self.parse_json_file(tag_file, "Tag", "tags", self.tags_schema)
 
     def parse_flights(self, flight_file):
-        with open(flight_file, 'r') as f:
-            flights = dict()
-            json_data = f.read()
-            json_decoded = json.loads(json_data)
-            for flight in json_decoded["flights"]:
-                new_flight = self.factory.create_object(
-                    json_decoded["flights"][flight],
-                    "Flight", self.flight_schema)
-                flights[flight] = new_flight
-            return flights
+        return self.parse_json_file(flight_file, "Flight", "flights",
+            self.flight_schema)
 
     def parse_cities(self, city_file):
-        with open(city_file, 'r') as f:
-            cities = dict()
+        return self.parse_json_file(city_file, "City", "cities",
+            self.city_schema)
+
+    def parse_json_file(self, jfile, datatype, group, schema):
+        with open(jfile, 'r') as f:
+            objects = dict()
             json_data = f.read()
             json_decoded = json.loads(json_data)
-            for city in json_decoded["cities"]:
-                new_city = self.factory.create_object(
-                    json_decoded["cities"][city],
-                    "City", self.city_schema)
-                cities[city] = new_city
-            return cities
+            for obj in json_decoded[group]:
+                new_obj = self.factory.create_object(
+                    json_decoded[group][obj],
+                    datatype, schema)
+                objects[obj] = new_obj
+            return objects

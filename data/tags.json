@@ -1,9 +1,8 @@
 {
     "tags": {
         "hot": {
-            "target_property": "flight/arrival/city/temperature",
-            "positive": "high",
-            "negative": "low"
+            "target_property": "flight/arrival/temperature",
+            "positive": "hot"
         },
         "all": {
             "target_property": "*",
