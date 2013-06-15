@@ -1,0 +1,11 @@
+{
+    "cities": {
+        "Leipzig": {
+            "temperature": "normal"
+        },
+        "Bagdad": {
+            "temperature": "hot",
+            "type": "family"
+        }
+    }
+}

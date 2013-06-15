@@ -41,17 +41,27 @@ def print_customer(customer, schema):
     print("=========")
 
 
+def dialog_customer(customers, customer_schema):
+    custid = input('\nSelect customer [id]: ')
+    if custid not in customers:
+        print('Invalid customer id!')
+        dialog_customer(customers, customer_schema)
+    else:
+        print("\nSelected customer: ")
+        print_customer(customers[custid], customer_schema)
+
 def main():
     parser = Parser()
+    cities = parser.parse_cities('data/city.json')
+    flights = parser.parse_flights('data/flight.json')
     customers = parser.parse_customers('data/customer.json')
     articles = parser.parse_articles('data/article.json')
     tags = parser.parse_tags('data/tags.json')
+
     engine = Engine(customers, articles, tags)
 
     print_customers(customers, parser.customer_schema)
-    custid = input('\nSelect customer [id]: ')
-    print("\nSelected customer: ")
-    print_customer(customers[custid], parser.customer_schema)
+    dialog_customer(customers, parser.customer_schema)
 
     return True
 

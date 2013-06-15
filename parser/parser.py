@@ -30,6 +30,9 @@ class Parser:
         self.article_schema = ["name", "tags", "regular_price", "action_price",
             "limit_time", "limit_number"]
         self.tags_schema = ["target_property", "positive", "negative"]
+        self.flight_schema = ["departure", "arrival", "departure_time",
+            "arrival_time"]
+        self.city_schema = ["temperature", "type"]
 
     def parse_customers(self, customer_file):
         with open(customer_file, 'r') as f:
@@ -66,3 +69,27 @@ class Parser:
                     "Tag", self.tags_schema)
                 tags[tag] = new_tag
             return tags
+
+    def parse_flights(self, flight_file):
+        with open(flight_file, 'r') as f:
+            flights = dict()
+            json_data = f.read()
+            json_decoded = json.loads(json_data)
+            for flight in json_decoded["flights"]:
+                new_flight = self.factory.create_object(
+                    json_decoded["flights"][flight],
+                    "Flight", self.flight_schema)
+                flights[flight] = new_flight
+            return flights
+
+    def parse_cities(self, city_file):
+        with open(city_file, 'r') as f:
+            cities = dict()
+            json_data = f.read()
+            json_decoded = json.loads(json_data)
+            for city in json_decoded["cities"]:
+                new_city = self.factory.create_object(
+                    json_decoded["cities"][city],
+                    "City", self.city_schema)
+                cities[city] = new_city
+            return cities
