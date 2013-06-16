@@ -27,9 +27,6 @@ class Engine:
         self.flight_catalog = flight_catalog
         self.city_catalog = city_catalog
 
-    def articlelist_customer(self, customer):
-        pass
-
     def applicable_tags_customer(self, customer):
         tags = []
         for tag in self.tag_catalog:

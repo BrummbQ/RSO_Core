@@ -22,6 +22,8 @@ import sys
 from parser.parser import Parser
 from engine.engine import Engine
 
+from operator import itemgetter
+
 
 format_width = 15
 
@@ -31,13 +33,13 @@ def print_customers(customers, schema):
     for customer in customers:
         print('{:<{format_width}}{} {}'.format('id', ':', customer,
             format_width=format_width))
-        print_customer(customers[customer], schema)
+        print_type(customers[customer], schema)
 
 
-def print_customer(customer, schema):
+def print_type(datatype, schema):
     for tag in schema:
         print('{:<{format_width}}{} {}'.format(tag, ':',
-            str(getattr(customer, tag, "None")), format_width=format_width))
+            str(getattr(datatype, tag, "None")), format_width=format_width))
     print("=========")
 
 
@@ -48,8 +50,22 @@ def dialog_customer(customers, customer_schema):
         dialog_customer(customers, customer_schema)
     else:
         print("\nSelected customer: ")
-        print_customer(customers[custid], customer_schema)
+        print_type(customers[custid], customer_schema)
         return custid
+
+
+def show_best_articles(article_rating, article_catalog, schema):
+    print('\nMatching articles for customer (in descending order):')
+    sorted_article_list(article_rating, article_catalog, schema)
+
+
+def sorted_article_list(articledict, article_catalog, schema):
+    slist = sorted(articledict.items(), key=itemgetter(1),
+        reverse=True)
+    for a in slist:
+        article = article_catalog.get(a[0])
+        if article:
+            print_type(article, schema)
 
 
 def main():
@@ -66,9 +82,10 @@ def main():
     cid = dialog_customer(customers, parser.customer_schema)
 
     ar = engine.articlerating_customer(cid)
-    print(ar)
+    show_best_articles(ar, articles, parser.article_schema)
 
     return True
+
 
 if __name__ == '__main__':
     status = main()
