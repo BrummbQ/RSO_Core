@@ -38,10 +38,13 @@ def print_customers(customers, schema):
 
 def print_type(datatype, schema):
     for tag in schema:
-        print('{:<{format_width}}{} {}'.format(tag, ':',
-            str(getattr(datatype, tag, "None")), format_width=format_width))
+        print_entry(tag, str(getattr(datatype, tag, "None")))
     print("=========")
 
+
+def print_entry(key, value):
+    print('{:<{format_width}}{} {}'.format(key, ':',
+            value, format_width=format_width))
 
 def dialog_customer(customers, customer_schema):
     custid = input('\nSelect customer [id]: ')
@@ -59,12 +62,13 @@ def show_best_articles(article_rating, article_catalog, schema):
     sorted_article_list(article_rating, article_catalog, schema)
 
 
-def sorted_article_list(articledict, article_catalog, schema):
-    slist = sorted(articledict.items(), key=itemgetter(1),
+def sorted_article_list(article_rating, article_catalog, schema):
+    slist = sorted(article_rating.items(), key=itemgetter(1),
         reverse=True)
     for a in slist:
         article = article_catalog.get(a[0])
         if article:
+            print_entry('significance', str(a[1]))
             print_type(article, schema)
 
 

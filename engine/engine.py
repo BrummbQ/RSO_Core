@@ -44,13 +44,9 @@ class Engine:
         customer.tags = ctags
 
         customer.article_rating = dict()
-        for tag in customer.tags:
-            for aid in self.article_catalog:
-                if tag in self.article_catalog[aid].tags:
-                    if aid not in customer.article_rating:
-                        customer.article_rating[aid] = 0
-                    else:
-                        customer.article_rating[aid] += 1
+        for aid in self.article_catalog:
+            customer.article_rating[aid] = len(set(customer.tags).intersection(
+                set(self.article_catalog[aid].tags)))
 
         return customer.article_rating
 
