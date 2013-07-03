@@ -6,6 +6,10 @@
         "Bagdad": {
             "temperature": "hot",
             "type": "family"
+        },
+        "New York": {
+            "temperature": "normal",
+            "type": "business"
         }
     }
 }

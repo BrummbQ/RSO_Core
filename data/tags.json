@@ -4,13 +4,45 @@
             "target_property": "flight/arrival/temperature",
             "positive": "hot"
         },
-        "all": {
-            "target_property": "*",
-            "positive": "*"
-        },
         "beverage": {
             "target_property": "flight/remaining_time",
-            "positive": "15"
+            "positive": ">15"
+        },
+        "meal": {
+            "target_property": "flight/remaining_time",
+            "positive": ">30"
+        },
+        "expensive": {
+            "target_property": "flight_class",
+            "positive": "business"
+        },
+        "cheap": {
+            "target_property": "flight_class",
+            "positive": "economy"
+        },
+        "senior": {
+            "target_property": "age",
+            "positive": ">60"
+        },
+        "young": {
+            "target_property": "age",
+            "positive": "<40"
+        },
+        "iraq": {
+            "target_property": "flight/arrival",
+            "positive": "Bagdad"
+        },
+        "New York": {
+            "target_property": "flight/arrival",
+            "positive": "New York"
+        },
+        "Leipzig": {
+            "target_property": "flight/arrival",
+            "positive": "Leipzig"
+        },
+        "vacation": {
+            "target_property": "baggage",
+            "positive": "large"
         }
     }
 }

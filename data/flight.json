@@ -4,13 +4,22 @@
             "departure": "Leipzig",
             "arrival": "Bagdad",
             "departure_time": 1375358400,
-            "arrival_time": 1375372800
+            "arrival_time": 1375372800,
+            "remaining_time": 30
         },
         "f-1": {
             "departure": "Bagdad",
             "arrival": "Leipzig",
             "departure_time": 1376118000,
-            "arrival_time": 1376132400
+            "arrival_time": 1376132400,
+            "remaining_time": 10
+        },
+        "f-111": {
+            "departure": "Leipzig",
+            "arrival": "New York",
+            "departure_time": 1376118000,
+            "arrival_time": 1376132400,
+            "remaining_time": 45
         }
     }
 }

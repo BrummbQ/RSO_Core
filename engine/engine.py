@@ -33,8 +33,18 @@ class Engine:
             tagobj = self.tag_catalog[tag]
             tp = tagobj.target_property
             prop = self.get_property(customer, tp)
-            if prop and prop == tagobj.positive:
-                tags.append(prop)
+            if prop:
+                if tagobj.positive[0] in '><':
+                    try:
+                        val = int(tagobj.positive[1:])
+                        if not eval(str(prop) + tagobj.positive[0] + str(val)):
+                            continue
+                    except ValueError:
+                        print('valerr', val)
+                elif prop != tagobj.positive:
+                    continue
+
+                tags.append(tag)
 
         return tags
 
@@ -47,6 +57,8 @@ class Engine:
         for aid in self.article_catalog:
             customer.article_rating[aid] = len(set(customer.tags).intersection(
                 set(self.article_catalog[aid].tags)))
+            customer.article_rating[aid] -= len(set(
+                self.article_catalog[aid].tags).difference(set(customer.tags)))
 
         return customer.article_rating
 

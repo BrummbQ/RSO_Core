@@ -14,8 +14,25 @@
             "age": 23,
             "gender": "female",
             "address": "Leipzig",
+            "flight": "f-1",
+            "flight_class": "business",
+            "baggage": "large"
+        },
+        "c": {
+            "name": "Heinz",
+            "age": 62,
+            "gender": "male",
+            "address": "Leipzig",
             "flight": "f-123",
             "return_flight": "f-1",
+            "flight_class": "economy"
+        },
+        "d": {
+            "name": "Peter",
+            "age": 42,
+            "gender": "male",
+            "address": "Leipzig",
+            "flight": "f-111",
             "flight_class": "business"
         }
     }

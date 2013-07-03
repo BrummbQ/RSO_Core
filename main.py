@@ -46,6 +46,7 @@ def print_entry(key, value):
     print('{:<{format_width}}{} {}'.format(key, ':',
             value, format_width=format_width))
 
+
 def dialog_customer(customers, customer_schema):
     custid = input('\nSelect customer [id]: ')
     if custid not in customers:

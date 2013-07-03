@@ -26,12 +26,11 @@ class Parser:
     def __init__(self):
         self.factory = Factory()
         self.customer_schema = ["name", "gender", "age", "address", "flight",
-            "return_flight"]
-        self.article_schema = ["name", "tags", "regular_price", "action_price",
-            "limit_time", "limit_number"]
+            "return_flight", "flight_class", "baggage"]
+        self.article_schema = ["name", "tags", "regular_price", "action_price"]
         self.tags_schema = ["target_property", "positive", "negative"]
         self.flight_schema = ["departure", "arrival", "departure_time",
-            "arrival_time"]
+            "arrival_time", "remaining_time"]
         self.city_schema = ["temperature", "type"]
 
     def parse_customers(self, customer_file):
